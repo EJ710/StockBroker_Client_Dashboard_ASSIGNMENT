@@ -66,9 +66,9 @@ stocks, and every dashboard updates **independently and asynchronously**.
   │ Dashboard     │      │   └───────────────┘          ▼           │
   │  • GOOG tile  │      │                     ┌──────────────────┐ │
   └───────────────┘      │                     │ Connection       │ │
-                         │   filtered to A ◄────┤ Manager (fan-out)│ │
-  Browser (User B)       │                     │  per-user tickers │ │
-  ┌───────────────┐  WS  │   filtered to B ◄────┤                  │ │
+                         │   filtered to A ◄───┤ Manager (fan-out)│ │
+  Browser (User B)       │                     │  per-user tickers│ │
+  ┌───────────────┐  WS  │   filtered to B ◄───┤                  │ │
   │  • NVDA tile  │◄─────┼─────────────────────└──────────────────┘ │
   │  • META tile  │      │                                          │
   └───────────────┘      │   REST: /auth/* /stocks/*  ── SQLite     │
