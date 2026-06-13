@@ -16,5 +16,7 @@ call .venv\Scripts\activate.bat
 python -m pip install --quiet --upgrade pip
 pip install --quiet -r requirements.txt
 
-echo Starting API on http://localhost:8000  (docs at /docs)
-uvicorn app.main:app --reload --port 8000
+REM Port is configurable via the PORT env var (default 8000) in case 8000 is busy.
+if "%PORT%"=="" set PORT=8000
+echo Starting API on http://localhost:%PORT%  (docs at /docs)
+uvicorn app.main:app --reload --port %PORT%

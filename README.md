@@ -250,8 +250,16 @@ exist, you don't reinstall anything — just start the two servers:
 > the venv only if it's missing and skip work that's already done — so you can
 > just use those if you prefer one command.
 
-> **Port already in use?** Something is already on `:8000` or `:5173`.
-> Free it with — macOS/Linux: `lsof -ti:8000 | xargs kill` ·
+> **Port already in use?** The app is resilient to this:
+> - **Frontend (5173):** if it's taken, Vite automatically starts on the next
+>   free port (5174, …) and prints the real URL — it still works, because the
+>   frontend talks to the API through relative URLs, not a fixed port.
+> - **Backend (8000):** set a different port with the `PORT` env var, e.g.
+>   `PORT=8001 ./run.sh` (Windows: `set PORT=8001 && run.bat`). Then point the
+>   frontend at it by copying `frontend/.env.example` to `frontend/.env` and
+>   setting `VITE_API_TARGET=http://localhost:8001`.
+>
+> Or just free the port — macOS/Linux: `lsof -ti:8000 | xargs kill` ·
 > Windows (PowerShell): `Get-NetTCPConnection -LocalPort 8000 | Select -Expand OwningProcess | ForEach-Object { Stop-Process -Id $_ }`.
 
 ---

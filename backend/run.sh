@@ -14,5 +14,7 @@ source .venv/bin/activate
 pip install --quiet --upgrade pip
 pip install --quiet -r requirements.txt
 
-echo "Starting API on http://localhost:8000  (docs at /docs)"
-exec uvicorn app.main:app --reload --port 8000
+# Port is configurable via the PORT env var (default 8000) in case 8000 is busy.
+PORT="${PORT:-8000}"
+echo "Starting API on http://localhost:${PORT}  (docs at /docs)"
+exec uvicorn app.main:app --reload --port "${PORT}"
