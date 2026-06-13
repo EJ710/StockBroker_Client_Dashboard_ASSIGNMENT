@@ -1,0 +1,325 @@
+/* ------------------------------------------------------------------ */
+/* Global theme — a clean, dark "fintech" look.                        */
+/* ------------------------------------------------------------------ */
+:root {
+  --bg: #0b0e14;
+  --panel: #141925;
+  --panel-2: #1b2230;
+  --border: #283042;
+  --text: #e6e9ef;
+  --muted: #8a93a6;
+  --primary: #3b82f6;
+  --primary-hover: #2f6fe0;
+  --up: #16c784;
+  --down: #ea3943;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+}
+.brand-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--up));
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+}
+
+/* ------------------------------------------------------------------ */
+/* Auth screen                                                         */
+/* ------------------------------------------------------------------ */
+.auth-wrap {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+.auth-card {
+  width: 100%;
+  max-width: 380px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+.auth-subtitle {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 16px 0 24px;
+  line-height: 1.5;
+}
+.field-label {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+input {
+  width: 100%;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  padding: 12px 14px;
+  font-size: 15px;
+  margin-bottom: 16px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+input:focus { border-color: var(--primary); }
+.otp-input {
+  letter-spacing: 8px;
+  font-size: 22px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.btn-primary {
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-primary:hover:not(:disabled) { background: var(--primary-hover); }
+.btn-primary:disabled { opacity: 0.6; cursor: default; }
+.btn-primary.small { width: auto; padding: 10px 18px; }
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+  margin-top: 14px;
+  width: 100%;
+}
+.btn-link:hover { color: var(--text); }
+
+.dev-hint {
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #bcd4ff;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.error-msg {
+  color: var(--down);
+  font-size: 13px;
+  margin-top: 14px;
+}
+.error-msg.inline { margin-top: 8px; }
+
+.info-msg {
+  color: #bcd4ff;
+  font-size: 13px;
+  margin-top: 14px;
+}
+
+/* Switch between login / register */
+.auth-switch {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  margin: 18px 0 0;
+}
+.link-inline {
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0;
+}
+.link-inline:hover { text-decoration: underline; }
+.field-label .hint {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* ------------------------------------------------------------------ */
+/* Dashboard                                                           */
+/* ------------------------------------------------------------------ */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 28px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.user-email { color: var(--muted); font-size: 14px; }
+
+.conn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.conn-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.conn.live { color: var(--up); }
+.conn.live .conn-dot {
+  background: var(--up);
+  box-shadow: 0 0 8px var(--up);
+  animation: pulse 1.4s infinite;
+}
+.conn.down { color: var(--muted); }
+.conn.down .conn-dot { background: var(--muted); }
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.content {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+}
+.panel h2 { margin: 0 0 16px; font-size: 16px; }
+.panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.muted { color: var(--muted); font-size: 13px; }
+
+/* Subscribe box */
+.subscribe-form { display: flex; gap: 10px; }
+.subscribe-form input { margin-bottom: 0; flex: 1; }
+.chips {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chips-label { color: var(--muted); font-size: 13px; margin-right: 4px; }
+.chip {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.chip:hover { border-color: var(--primary); color: #bcd4ff; }
+
+/* Watchlist grid */
+.empty {
+  color: var(--muted);
+  padding: 28px;
+  text-align: center;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.stock-card {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.stock-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.stock-ticker { font-weight: 700; font-size: 18px; }
+.stock-name {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 2px;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.remove-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+}
+.remove-btn:hover { color: var(--down); }
+
+.stock-price {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 14px 0 6px;
+  font-variant-numeric: tabular-nums;
+}
+.stock-change { font-size: 14px; font-weight: 600; }
+.stock-change.up { color: var(--up); }
+.stock-change.down { color: var(--down); }
+.stock-change.flat { color: var(--muted); }
+
+/* Price flash on each tick */
+.flash-up { animation: flashUp 0.45s ease-out; }
+.flash-down { animation: flashDown 0.45s ease-out; }
+@keyframes flashUp {
+  0% { box-shadow: 0 0 0 1px var(--up), 0 0 18px rgba(22, 199, 132, 0.5); }
+  100% { box-shadow: none; }
+}
+@keyframes flashDown {
+  0% { box-shadow: 0 0 0 1px var(--down), 0 0 18px rgba(234, 57, 67, 0.5); }
+  100% { box-shadow: none; }
+}

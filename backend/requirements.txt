@@ -1,0 +1,12 @@
+# ---------------------------------------------------------------------------
+# Backend Python dependencies
+# ---------------------------------------------------------------------------
+# Intentionally minimal. We use the Python standard library `sqlite3` module
+# directly for persistence (no ORM) to keep the data layer transparent and
+# easy to read, and to avoid version fragility on very new Python releases.
+# ---------------------------------------------------------------------------
+
+fastapi==0.115.6          # Web framework + automatic OpenAPI docs at /docs
+uvicorn[standard]==0.34.0 # ASGI server (includes websockets + uvloop + httptools)
+PyJWT==2.10.1             # Encode/decode the JWT session tokens
+email-validator==2.2.0   # Validate the email address a user logs in with
